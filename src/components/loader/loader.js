@@ -1,5 +1,5 @@
-import React from 'react'
-import classes from './loader.module.css'
+import React from 'react';
+import classes from './loader.module.css';
 
 const Loader = props => (
   <div className={classes.center}>

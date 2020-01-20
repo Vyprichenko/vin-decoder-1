@@ -12,7 +12,7 @@ const Variables = ({ history, data }) => {
 
   const renderLis = () => {
      return data.results.map(el => (
-                          <li className="card" onClick={() => openVariable(el.ID)}>
+                          <li key={el.Name} className="card" onClick={() => openVariable(el.ID)}>
                             <div className="card-name">{el.Name}</div>
                             <div className="card-description" dangerouslySetInnerHTML={{__html: el.Description}}/>
                           </li>

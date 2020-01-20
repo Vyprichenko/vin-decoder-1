@@ -1,5 +1,5 @@
 import { createStore, compose, applyMiddleware, combineReducers } from 'redux';
-import thunk from 'redux-thunk'
+import thunk from 'redux-thunk';
 import vinsSearch from './reducers/vinsSearch';
 
 let rootReducer = combineReducers({

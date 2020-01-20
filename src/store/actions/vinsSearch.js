@@ -10,8 +10,8 @@ export function fetchVin(code) {
 
       if (response && (response.status === 200) && response.results) {
 
-        if (response.results.find(el => el.Variable === 'Error Code' && el.Value.split()[0] !== '0'  )) {
-          return dispatch(notFindInformation())
+        if (response.results.find(el => (el.Variable === 'Error Code') && (el.Value.charAt(0) !== '0'))) {
+          return dispatch(notFindInformation(code))
         }
   
         let currentVin = {name: code, ...response};
@@ -27,7 +27,7 @@ export function fetchVin(code) {
   }
 }
 
-const takeFromCache = (code, state) => { // return undefined or elem
+const takeFromCache = (code, state) => { 
   return state.cache[0] && state.cache.find(el => code === el.name);
 }
 
@@ -65,9 +65,10 @@ export function updateVin(currentVin) {
   }
 }
 
-export function notFindInformation() {
+export function notFindInformation(code) {
   return {
     type: types.NOT_FIND_INFORMATION,
+    code
   }
 }
 

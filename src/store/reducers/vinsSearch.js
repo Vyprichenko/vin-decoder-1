@@ -19,7 +19,7 @@ export default function vinsSearch(state = initialState, action) {
         ...state, 
         currentVin: null, 
         loading: false, 
-        searchNotFind: 'Sorry, we could not find information.',
+        searchNotFind: `Sorry, we could not find information for this "${action.code}" code.`,
         serverError: null,
       }
     case types.WRITE_TO_CACHE:

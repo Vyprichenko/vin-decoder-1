@@ -133,6 +133,10 @@ table {
 
 .last-vins {
   margin-bottom: 10px;
+
+  &-title {
+    margin-bottom: 7px;
+  }
 }
 
 .card {
@@ -161,7 +165,7 @@ table {
   }
 
   &-name {
-    display: inline;
+    display: inline-block;
     position: relative;
     font-style: italic;
     font-size: 18px;

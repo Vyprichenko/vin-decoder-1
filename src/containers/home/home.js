@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { getData, setVin } from '../../store/actions/vinsSearch';
 import SearchBar from '../../components/search-bar';
-import InfoList from '../../components/info-list';
+import ResultsTable from '../../components/results-table';
 import LastVins from '../../components/last-vins';
 import styles from './home.module.scss';
 
@@ -11,16 +11,17 @@ export const Home = ({ onSubmit, setVin, currentVin,
 
   const renderSearchResults = () => (
     <>
-      {serverError ? <div className={styles.serverError}>{serverError}</div> 
-                   : (<>
-                        {currentVin && (<>
-                          <h3 className={styles.currentVin}>Current VIN: {currentVin.name}</h3>
-                          <div className="note">{currentVin.message}</div>
-                        </>)}
-                        
-                        {!searchNotFind ? <InfoList list={currentVin && currentVin.results} />
-                                        : <div className={styles.searchNotFind}>{searchNotFind}</div>}
-                      </>)}
+      {serverError 
+          ? <div className={styles.serverError}>{serverError}</div> 
+          : (<>
+              {currentVin && (<>
+                <h3 className={styles.currentVin}>Current VIN: {currentVin.name}</h3>
+                <div className="note">{currentVin.message}</div>
+              </>)}
+              
+              {!searchNotFind ? <ResultsTable list={currentVin && currentVin.results} />
+                              : <div className={styles.searchNotFind}>{searchNotFind}</div>}
+            </>)}
     </>
   )
 
