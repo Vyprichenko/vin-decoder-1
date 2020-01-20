@@ -20,4 +20,10 @@ vinAPI.getVehicleVariableList = () => {
                       .catch(reason => reason);
 }
 
-export default vinAPI;
+vinAPI.getVariableVin = code => {
+  return vinAPI.getVehicleVariableList()
+               .then(res => res.results.find(el => el.ID === +code))
+               .catch(reason => reason);
+}
+
+export default vinAPI

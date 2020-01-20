@@ -1,9 +1,17 @@
 import React from 'react';
+import vinAPI from "../../api/api";
+import { withData } from '../../hoc';
+import { withRouter } from 'react-router-dom';
 
-const Variable = (props) => (
+const Variable = ({ data: { Name, Description } }) => (
   <div>
-    Variable
+    <div>{Name}</div>
+    <strong dangerouslySetInnerHTML={{__html: ( Description)}} />
   </div>
 ) 
 
-export default Variable;
+const getData = ({ match }) => vinAPI.getVariableVin(match.params.id)
+
+export default withRouter(
+  withData( Variable, getData )
+);
