@@ -6,18 +6,31 @@ import InfoList from '../../components/info-list';
 import LastVins from '../../components/last-vins';
 import styles from './home.module.scss';
 
-export const Home = ({ onSubmit, setVin, currentVin, loading, cache, error, searchResults }) => {
+export const Home = ({ onSubmit, setVin, currentVin, 
+                       loading, cache, serverError, searchNotFind }) => {
+
+  const renderSearchResults = () => (
+    <>
+      {serverError ? <div className={styles.serverError}>{serverError}</div> 
+                   : (<>
+                        {currentVin && (<>
+                          <h3 className={styles.currentVin}>Current VIN: {currentVin.name}</h3>
+                          <div className="note">{currentVin.message}</div>
+                        </>)}
+                        
+                        {!searchNotFind ? <InfoList list={currentVin && currentVin.results} />
+                                        : <div className={styles.searchNotFind}>{searchNotFind}</div>}
+                      </>)}
+    </>
+  )
 
   return (
-    <>
+    <div>
       <h1 className={styles.title}>VIN Decoder</h1>
-      <SearchBar onSubmit={onSubmit}
-                  isDisabled={loading}
-                  classes={[styles.searchBar]} />
+      <SearchBar onSubmit={onSubmit} isDisabled={loading} classes={[styles.searchBar]} />
       <LastVins vins={cache} onClick={setVin} />
-      {currentVin && <div className="note">{currentVin.message}</div>}
-      <InfoList list={currentVin ? currentVin.results : []} />
-    </>
+      { renderSearchResults() }
+    </div>
   )
 }
 
@@ -27,8 +40,8 @@ function mapStateToProps(state) {
     currentVin: state.vinsSearch.currentVin,
     loading: state.vinsSearch.loading,
     cache: state.vinsSearch.cache,
-    error: state.vinsSearch.error,
-    searchResults: state.vinsSearch.searchResults,
+    serverError: state.vinsSearch.serverError,
+    searchNotFind: state.vinsSearch.searchNotFind,
   }
 }
 

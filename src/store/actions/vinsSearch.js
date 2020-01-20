@@ -11,7 +11,7 @@ export function fetchVin(code) {
       if (response && (response.status === 200) && response.results) {
 
         if (response.results.find(el => el.Variable === 'Error Code' && el.Value.split()[0] !== '0'  )) {
-          dispatch(notFindInformation())
+          return dispatch(notFindInformation())
         }
   
         let currentVin = {name: code, ...response};
@@ -19,10 +19,10 @@ export function fetchVin(code) {
         dispatch(writeToCache(currentVin))
         dispatch(updateVin(currentVin))
       } else {
-        dispatch(FetchVinFailure())
+        throw new Error('Sorry. There was some mistake on the server.')
       }
     } catch (e) {
-      dispatch(FetchVinFailure(e))
+      dispatch(serverError(e.message))
     }
   }
 }
@@ -71,9 +71,9 @@ export function notFindInformation() {
   }
 }
 
-export function FetchVinFailure(reason) {
+export function serverError(reason) {
   return {
-    type: types.FETCH_VIN_FAILURE,
+    type: types.SERVER_ERROR,
     payload: reason,
   }
 }

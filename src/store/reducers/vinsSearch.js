@@ -4,8 +4,8 @@ const initialState = {
   currentVin : null,
   cache : [],
   loading: false,
-  error: null,
-  searchResults: null,
+  serverError: null,
+  searchNotFind: null,
 }
 
 export default function vinsSearch(state = initialState, action) {
@@ -19,8 +19,8 @@ export default function vinsSearch(state = initialState, action) {
         ...state, 
         currentVin: null, 
         loading: false, 
-        searchResults: 'Sorry, we could not find information!',
-        error: null,
+        searchNotFind: 'Sorry, we could not find information.',
+        serverError: null,
       }
     case types.WRITE_TO_CACHE:
       return {
@@ -30,26 +30,26 @@ export default function vinsSearch(state = initialState, action) {
           ...[...state.cache].slice(0, 4),
         ],
       }
-    case types.FETCH_VIN_FAILURE:
+    case types.SERVER_ERROR:
       return {
         ...state, 
         loading: false,
-        error: 'Произошла какай-то ошибка на сервере!',
+        serverError: action.payload,
       }
     case types.UPDATE_VIN:
       return {
         ...state, 
         currentVin: action.currentVin,
         loading: false,
-        searchResults: null,
-        error: null,
+        searchNotFind: null,
+        serverError: null,
       }
     case types.SET_VIN:
       return {
         ...state, 
-        searchResults: null, 
+        searchNotFind: null, 
         currentVin: action.currentVin, 
-        error: null,
+        serverError: null,
       }
     default:
       return state

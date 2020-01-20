@@ -51,7 +51,6 @@ class SearchBar extends React.Component {
 
     return (
       <form className={cn(...classes, styles.form)} onSubmit={this.onSubmit}>
-
         <Input  value={this.state.input.value}
                 valid={this.state.input.valid}
                 shouldValidate={!!this.state.input.validation}
@@ -63,7 +62,6 @@ class SearchBar extends React.Component {
         <Button disabled={isDisabled}>
           {!isDisabled ? 'Decode' : 'Decoding...'}
         </Button>
-
       </form>
     )
   }

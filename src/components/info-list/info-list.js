@@ -1,9 +1,11 @@
 import React from 'react';
-import styles from './info-list.module.scss';
+import PropTypes from 'prop-types';
 
-const InfoList = ({ list }) => (
-  <>
-    { list.length !== 0 && (
+const InfoList = ({ list }) => {
+  
+  return (
+    <>
+    { list && list.length !== 0 && (
 
       <table className="table-striped">
         {list
@@ -17,6 +19,15 @@ const InfoList = ({ list }) => (
       </table>
     ) } 
   </>
-)
+  )
+}
+
+InfoList.propTypes = {
+  list: PropTypes.array,
+}
+
+InfoList.defaultProps = {
+  list: [],
+}
 
 export default InfoList;
