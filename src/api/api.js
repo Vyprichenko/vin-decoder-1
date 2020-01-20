@@ -20,6 +20,12 @@ vinAPI.getVehicleVariableList = () => {
                       .catch(reason => reason);
 }
 
+vinAPI.getDecodeVin = code => {
+  return axiosInstance.get(`vehicles/decodevin/${code}?format=json`)
+                      .then(response => _transformParams(response))
+                      .catch(reason => reason);
+}
+
 vinAPI.getVariableVin = code => {
   return vinAPI.getVehicleVariableList()
                .then(res => res.results.find(el => el.ID === +code))

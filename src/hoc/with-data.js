@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Loader from './../components/loader';
 
-const withData = (View, getData) => {
+const withData = (getData) => (View) => {
   return class extends Component {
 
     state = {

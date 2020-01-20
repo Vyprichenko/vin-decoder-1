@@ -12,7 +12,6 @@ const App = () => (
     <Router>
       <Header />
       <Layout>
-        {/* добавь ещё класс для перехода на активную ссылку и можеш коммитеть! */}
         <Switch>
           <Route path="/" exact component={Home} />
           <Route path="/variables/:id" component={Variable} />
