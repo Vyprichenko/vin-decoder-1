@@ -10,8 +10,14 @@ const _transformParams = (response) => {
   return {
     status: response.status,
     message: response.data.Message,
-    results: response.data.Results,
+    results: _filterResults(response.data.Results),
   }
+}
+const _filterResults = (data) => {
+  let results = [...data];
+
+  return results.filter(el => (el.Value !== '') && (el.Description !== '') && 
+                              (el.Value !== null) && (el.Description !== null));
 }
 
 vinAPI.getVehicleVariableList = () => {

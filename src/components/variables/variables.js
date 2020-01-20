@@ -5,14 +5,13 @@ import { withRouter } from 'react-router-dom';
 import { compose } from "redux";
 
 const Variables = ({ history, data }) => {
-
+  
   const openVariable = (id) => {
     history.push('/variables/' + id)
   }
 
   const renderLis = () => {
-     return data.results.filter(el => el.Value !== null)
-                        .map(el => (
+     return data.results.map(el => (
                           <li className="card" onClick={() => openVariable(el.ID)}>
                             <div className="card-name">{el.Name}</div>
                             <div className="card-description" dangerouslySetInnerHTML={{__html: el.Description}}/>

@@ -169,6 +169,14 @@ table {
     }
   }
 
+  &_no-hover {
+    cursor: default;
+
+    &:hover {
+      box-shadow: none;
+    }
+  }
+
   ul {
     margin-top: 20px;
 
