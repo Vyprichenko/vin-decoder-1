@@ -1,20 +1,15 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import styles from './header.module.scss'
 
 const Header = () => (
-  <div className={styles.header}>
-    <div>
-      <ul className={styles.menu}>
+  <div className="header">
+    <div className="container">
+      <ul className="menu">
         <li>
-          <NavLink to="/" exact activeClassName={styles.active}>
-            Home
-          </NavLink>
+          <NavLink to="/" exact>Home</NavLink>
         </li>
         <li>
-          <NavLink to="/variables" activeClassName={styles.active}>
-            Variables
-          </NavLink>
+          <NavLink to="/variables">Variables</NavLink>
         </li>
       </ul>
     </div>

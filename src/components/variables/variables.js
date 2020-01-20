@@ -14,16 +14,16 @@ const Variables = ({ history, data }) => {
      return data.results.filter(el => el.Value !== null)
                         .map(el => (
                           <li className="card" onClick={() => openVariable(el.ID)}>
-                            <div>{el.Name}</div>
-                            <strong dangerouslySetInnerHTML={{__html: el.Description}}/>
+                            <div className="card-name">{el.Name}</div>
+                            <div className="card-description" dangerouslySetInnerHTML={{__html: el.Description}}/>
                           </li>
                         ))
   }
 
   return (
-    <ol> 
+    <ul> 
       { renderLis() } 
-    </ol>
+    </ul>
   )
 }
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './input.module.css';
+import styles from './input.module.scss';
 import cn from 'classnames';
 
 const isInvalid = ({ valid, shouldValidate }) => !valid && shouldValidate;
@@ -11,15 +11,14 @@ const Input = props => {
 
   return (
     <div className={cn(props.classes.root)}>
-      <input
-        className={cn(classes, styles.input, props.classes.input)}
-        type={props.type}
-        value={props.value}
-        onChange={props.onChange}
-        maxLength={props.maxlength}
-      />
+      <input className={cn(classes, styles.input, props.classes.input)}
+             type={props.type}
+             value={props.value}
+             onChange={props.onChange}
+             maxLength={props.maxlength} />
 
       { isInvalid(props) && <span className={styles.errorMessage}>{props.errorMessage}</span> }
+
     </div>
   )
 }
@@ -30,6 +29,4 @@ Input.defaultProps = {
   maxlength: 17,
 }
 
-export default Input
-
-
+export default Input;

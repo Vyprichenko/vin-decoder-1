@@ -5,9 +5,9 @@ import { withRouter } from 'react-router-dom';
 import { compose } from "redux";
 
 const Variable = ({ data: { Name, Description } }) => (
-  <div>
-    <div>{Name}</div>
-    <strong dangerouslySetInnerHTML={{__html: ( Description)}} />
+  <div className="card">
+    <div className="card-name">{Name}</div>
+    <div className="card-description" dangerouslySetInnerHTML={{__html: ( Description)}} />
   </div>
 ) 
 
