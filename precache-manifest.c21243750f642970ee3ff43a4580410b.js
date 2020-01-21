@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "23441fcbd449e306095563f47ead8d14",
+    "revision": "3b49c90e768251be80a0961d68a1215b",
     "url": "/vin-decoder/index.html"
   },
   {
-    "revision": "ab265e4d6b23ef0230f6",
+    "revision": "1417b9e4fd6ea30e9b6d",
     "url": "/vin-decoder/static/css/main.07831b6d.chunk.css"
   },
   {
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/vin-decoder/static/js/2.82ddd341.chunk.js.LICENSE"
   },
   {
-    "revision": "ab265e4d6b23ef0230f6",
-    "url": "/vin-decoder/static/js/main.c671ce6f.chunk.js"
+    "revision": "1417b9e4fd6ea30e9b6d",
+    "url": "/vin-decoder/static/js/main.9f35c1b0.chunk.js"
   },
   {
     "revision": "157eeebed7928dbf019a",
