@@ -39,7 +39,7 @@ const withData = (getData) => (View) => {
       }
 
       if (error) {
-        return <div>Произошла ошибка!</div>;
+        return <div>Something has gone terribly wrong</div>;
       }
 
       return <View {...this.props} data={data} />;

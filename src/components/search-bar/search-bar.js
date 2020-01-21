@@ -1,22 +1,19 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import cn from 'classnames';
-import validate from '../../utils/validate';
 import Input from '../input';
 import Button from '../button';
 import styles from './search-bar.module.scss';
+
+const isInvalid = (value) => /[A-Z0-9]{17}/g.test(value) && !(/[QOI]/g.test(value)) && value.trim() !== ''
 
 class SearchBar extends Component {
 
   state = {
     input: {
       value: '',
-      errorMessage: 'Please enter a number of 17 characters',
+      errorMessage: 'Please enter the correct 17 characters',
       valid: true,
-      validation: {
-        required: true,
-        minLength: 17
-      }
     },
   }
 
@@ -34,7 +31,7 @@ d
 
     const input = { ...this.state.input }
     
-    if ( validate(input.value, input.validation) ) {
+    if ( isInvalid(input.value) ) {
       input.valid = true;
 
       this.setState({ input })
@@ -55,12 +52,11 @@ d
       <form className={cn(...classes, styles.form)} onSubmit={this.onSubmit}>
         <Input  value={input.value}
                 valid={input.valid}
-                shouldValidate={!!input.validation}
                 errorMessage={input.errorMessage}
                 onChange={this.onChange} 
                 classes={{root: styles.rootInput, input: styles.input}}
                 placeholder="vin number"
-                maxlength={String(input.validation.minLength)} />
+                maxlength={'17'} />
 
         <Button disabled={isDisabled}>
           {!isDisabled ? 'Decode' : 'Decoding...'}

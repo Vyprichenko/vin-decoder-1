@@ -9,21 +9,21 @@ import styles from './home.module.scss';
 export const Home = ({ onSubmit, setVin, currentVin, 
                        loading, cache, serverError, searchNotFind }) => {
 
-  const renderSearchResults = () => (
-    <>
-      {serverError 
-          ? <div className={styles.serverError}>{serverError}</div> 
-          : (<>
-              {currentVin && (<>
-                <h3 className={styles.currentVin}>Current VIN: {currentVin.name}</h3>
-                <div className="note">{currentVin.message}</div>
-              </>)}
-              
-              {!searchNotFind ? <ResultsTable list={currentVin && currentVin.results} />
-                              : <div className={styles.searchNotFind}>{searchNotFind}</div>}
-            </>)}
-    </>
-  )
+  const renderSearchResults = () => {    
+    if (serverError) {
+      return <div className={styles.serverError}>{serverError}</div>
+    } else {
+      return <>
+        {currentVin && (<>
+          <h3 className={styles.currentVin}>Current VIN: {currentVin.name}</h3>
+          <div className="note">{currentVin.message}</div>
+        </>)}
+        
+        {!searchNotFind ? <ResultsTable list={currentVin && currentVin.results} />
+                        : <div className={styles.searchNotFind}>{searchNotFind}</div>}
+      </>
+    }
+  }
 
   return (
     <div>

@@ -3,12 +3,10 @@ import PropTypes from 'prop-types';
 import cn from 'classnames';
 import styles from './input.module.scss';
 
-const isInvalid = ({ valid, shouldValidate }) => !valid && shouldValidate;
-
 const Input = props => {
   const classes = [];
 
-  if (isInvalid(props)) classes.push(styles.invalid)
+  if (!props.valid) classes.push(styles.invalid)
 
   return (
     <div className={cn(props.classes.root)}>
@@ -19,7 +17,7 @@ const Input = props => {
              maxLength={props.maxlength}
              placeholder={props.placeholder} />
 
-      { isInvalid(props) && <span className={styles.errorMessage}>{props.errorMessage}</span> }
+      { !props.valid && <span className={styles.errorMessage}>{props.errorMessage}</span> }
     </div>
   )
 }
@@ -29,6 +27,9 @@ Input.propTypes = {
   errorMessage: PropTypes.string,
   placeholder: PropTypes.string,
   maxlength: PropTypes.string,
+  valid: PropTypes.bool,
+  onChange: PropTypes.func,
+  classes: PropTypes.object,
 }
 
 Input.defaultProps = {
