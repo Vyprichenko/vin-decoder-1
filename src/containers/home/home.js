@@ -6,8 +6,7 @@ import ResultsTable from '../../components/results-table';
 import LastVins from '../../components/last-vins';
 import styles from './home.module.scss';
 
-export const Home = ({ onSubmit, setVin, currentVin, 
-                       loading, cache, serverError, searchNotFind }) => {
+export const Home = ({ onSubmit, setVin, currentVin, loading, cache, serverError }) => {
 
   const renderSearchResults = () => {    
     if (serverError) {
@@ -18,6 +17,8 @@ export const Home = ({ onSubmit, setVin, currentVin,
         <div className="note">{currentVin.message}</div>
         <ResultsTable list={currentVin && currentVin.results} />
       </>
+    } else {
+      return null
     }
   }
 
