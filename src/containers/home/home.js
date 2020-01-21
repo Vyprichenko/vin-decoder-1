@@ -12,15 +12,11 @@ export const Home = ({ onSubmit, setVin, currentVin,
   const renderSearchResults = () => {    
     if (serverError) {
       return <div className={styles.serverError}>{serverError}</div>
-    } else {
+    } else if (currentVin) {
       return <>
-        {currentVin && (<>
-          <h3 className={styles.currentVin}>Current VIN: {currentVin.name}</h3>
-          <div className="note">{currentVin.message}</div>
-        </>)}
-        
-        {!searchNotFind ? <ResultsTable list={currentVin && currentVin.results} />
-                        : <div className={styles.searchNotFind}>{searchNotFind}</div>}
+        <h3 className={styles.currentVin}>Current VIN: {currentVin.name}</h3>
+        <div className="note">{currentVin.message}</div>
+        <ResultsTable list={currentVin && currentVin.results} />
       </>
     }
   }
@@ -42,7 +38,6 @@ function mapStateToProps(state) {
     loading: state.vinsSearch.loading,
     cache: state.vinsSearch.cache,
     serverError: state.vinsSearch.serverError,
-    searchNotFind: state.vinsSearch.searchNotFind,
   }
 }
 

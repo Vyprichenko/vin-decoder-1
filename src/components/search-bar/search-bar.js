@@ -5,7 +5,7 @@ import Input from '../input';
 import Button from '../button';
 import styles from './search-bar.module.scss';
 
-const isInvalid = (value) => /[A-Z0-9]{17}/g.test(value) && !(/[QOI]/g.test(value)) && value.trim() !== ''
+const isInvalid = (value) => /[A-Z0-9]{17}/g.test(value) && value.trim() !== ''
 
 class SearchBar extends Component {
 

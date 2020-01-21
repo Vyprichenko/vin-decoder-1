@@ -8,12 +8,7 @@ export function fetchVin(code) {
     try {
       const response = await vinAPI.getDecodeVin(code);
 
-      if (response && (response.status === 200) && response.results) {
-
-        if (response.results.find(el => (el.Variable === 'Error Code') && (el.Value.charAt(0) !== '0'))) {
-          return dispatch(notFindInformation(code))
-        }
-  
+      if (response && (response.status === 200) && response.results) {  
         let currentVin = {name: code, ...response};
         
         dispatch(writeToCache(currentVin))
@@ -62,13 +57,6 @@ export function updateVin(currentVin) {
   return {
     type: types.UPDATE_VIN,
     currentVin
-  }
-}
-
-export function notFindInformation(code) {
-  return {
-    type: types.NOT_FIND_INFORMATION,
-    code
   }
 }
 
