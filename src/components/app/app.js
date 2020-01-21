@@ -9,7 +9,7 @@ import ErrorBoundary from '../error-boundry';
 
 const App = () => (
   <ErrorBoundary>
-    <Router>
+    <Router basename={process.env.PUBLIC_URL}>
       <Header />
       <Layout>
         <Switch>
