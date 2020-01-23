@@ -8,6 +8,15 @@ const Input = props => {
 
   if (!props.valid) classes.push(styles.invalid)
 
+  // По-моему сложновато с классами получилось.
+  // Компонент SearchBar в classes ожидает массив,
+  // а Input ожидает объект определённой структуры.
+  // Для стороннего взгляда это путаница:
+  // вроде бы свойства одинаковые и по названию и по назначению, а типы разные.
+  //
+  // Я бы вынес обёртку <div> в SearchBar, раз уж класс обёртки
+  // назначается родителем, и тип classes изменил бы на array,
+  // передавая через него только стили непосредственно инпута.
   return (
     <div className={cn(props.classes.root)}>
       <input className={cn(classes, styles.input, props.classes.input)}

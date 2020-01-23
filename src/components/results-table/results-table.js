@@ -17,6 +17,9 @@ const ResultsTable = ({ list }) => {
     </table>
   )
 
+  // Наверное было бы лучше сначала отфильтровать из list лишнее,
+  // прежде чем проверять длину и вызывать renderTable,
+  // а то вдруг там одни только 'Error Code' :)
   return (
     <>
       { list && (list.length !== 0) && renderTable() } 
